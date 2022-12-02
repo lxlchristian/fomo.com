@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css?family=Changa" rel="stylesheet" />
+
+        <!-- Bootstrap Scripts -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <!-- CSS Stylesheet -->
+        <link href="styles.css" rel="stylesheet" />
+
+        <!-- <title>HATECLUB</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                let hate_button = document.querySelector("#send-hate");
+                let hate_input = hate_button.parentNode.querySelector("input");
+                let result = document.querySelector("#send-result");
+
+                // Execute a function when the user presses a key on the keyboard
+                hate_input.addEventListener("keypress", (event) => {
+                    // If the user presses the "Enter" key on the keyboard
+                    if (event.key === "Enter") {
+                        // Trigger the button element with a click
+                        hate_button.click();
+                    }
+                });
+
+                // Execute function when the user clicks the button
+                hate_button.addEventListener("click", () => {
+                    // Only if the field is non-blank, then continue with the function
+                    if (hate_input.value != "") {
+                        result.innerHTML = "You have freed your heart from a lifelong grudge against " + hate_input.value + "!";
+                        hate_input.value = "";
+                    }
+                });
+            });
+        </script> -->
+    </head>
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div id="my-navbar">
+                <a class="navbar-brand" href="index.html">wyd2nite</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="orgs.html">Organizations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="parties.html">Parties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Title -->
+        <section class="coloured-section">
+            <div class="container-fluid">
+                <h1>wyd2nite - "What you doing tonight?"</h1>
+                <p>The party compass for Harvard College students with FOMO. </p>
+            </div>
+        </section>
+
+        <!-- Party Cards (see: https://getbootstrap.com/docs/5.2/components/card/)-->
+        <h2>Recently posted</h2>
+        <div class="card">
+            <div class="card border-info mb-3">
+            <img class="card-img-top" src="concert-g3e7ed7ec3_1280.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">FYE Office - QuadFest</h5>
+                    <p class="card-text">Join the QuadFest to find out just how long your walk to class will be next year.</p>
+                    <a href="party.html" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card border-info mb-3">
+            <img class="card-img-top" src="owl-gd2322aeb1_1920.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">The Owl - Open Rush Initiation</h5>
+                    <p class="card-text">This is totally a historical change from our usual problematic selectivity and absolutely not an attempt at pranking innocent freshmen and sophomores.</p>
+                    <a href="party.html" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card border-info mb-3">
+            <img class="card-img-top" src="reading-g2815b7c19_1280.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Lamont Library - Lamonster Rock</h5>
+                    <p class="card-text">Hie thee hither and rock with us, hip youngsters!</p>
+                    <a href="party.html" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+
+        <h2>Most popular</h2>
+        <div class="card">
+            <div class="card border-info mb-3">
+            <img class="card-img-top" src="headphones-gf069eb599_1920.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Woodbridge International Society - Silent Disco</h5>
+                    <p class="card-text">Had enough of the meaningless smalltalk? Let out your rage with us without having to hear anyone!</p>
+                    <a href="party.html" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card border-info mb-3">
+            <img class="card-img-top" src="london-gb200688e5_1920.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">The Harvard Museum of Natural History - Night at The Museum</h5>
+                    <p class="card-text">Join us for a night full of fascinating specimens, excluding you.</p>
+                    <a href="party.html" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card border-info mb-3">
+            <img class="card-img-top" src="audio-gaaf0a3f54_1920.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Widener Library - Loker Reading Room Karaoke Night</h5>
+                    <p class="card-text">Experience the bone-shattering reverberations of your belts on our polished marmor walls first-hand!</p>
+                    <a href="party.html" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Links to other pages -->
+        <!-- <section id="features" class="coloured-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="page-link" href="hate-test.html">Do I hate you?</a>
+                        <p>Find out if I hate you or not.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <a class="page-link" href="poem.html">Hate (An Acrostic Poem)</a>
+                        <p>Sometimes, the philosophies of the world are best captured through poetry.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <a class="page-link" href="feedback.html">Feedback</a>
+                        <p>Let me know what you think!</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </body>
+</html>

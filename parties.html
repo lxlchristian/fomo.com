@@ -1,0 +1,71 @@
+<!-- Displays all the parties happening (extended version of the truncated one on the homepage) [kinda like “public calendar”, or list] [+ like count for individual] -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        {%extends 'index.html' %} <!-- IS THIS CORRECT?? WANT TO EXTEND HEADER LAYOUT FROM INDEX.HTML - OR HAVE TO REFERENCE DJANGO AT BEGINNING??? -->
+    </head>
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div id="my-navbar">
+                <a class="navbar-brand" href="index.html">wyd2nite</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="orgs.html">Organizations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="parties.html">Parties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Title -->
+        <h1 class="title">Parties</h1>
+        <p>An overview of what parties are scheduled.</p>  <!-- QUESTION: DOES OUR PROGRAM HAVE THE ABILITY TO REMOVE PASSED EVENTS?-->
+
+        <!-- IMPORTANT QUESTION: CAN WE "TRANSFER" INPUT FROM INDEX.HTML TO HERE INSTEAD OF HAVING TO COPY EVERYTHING AGAIN??-->
+        <!-- SECOND IMPORTANT QUESTION: HOW TO ADD BUTTONS TO LIST??-->
+        <h2>Full party list</h2> <!-- CAN WE SORT THIS LIST BY DATE??? +CAN USER-INPUTTED EVENTS BE APPENDED AUTOMATICALLY?? (SAME TWO QUESTIONS FOR CARD LISTS ON INDEX.HTML!!))-->
+        <table>
+            <tr>
+                <th>Organization</th>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Location</th>
+                <th>Description</th>
+                <th>Average Previous Rating</th> <!-- Category denoting average ratings (OUT OF 5) for each party from past years. -->
+            </tr>
+            <tr>
+                <td>FYE Office</td>
+                <td>QuadFest</td>
+                <td>1/25/2022, 19:30</td>
+                <td>Radcliffe Quadrangle</td>
+                <td>Join the QuadFest to find out just how long your walk to class will be next year.</td>
+                <td>3.1</td>
+            </tr>
+            <tr>
+                <td>The Owl</td>
+                <td>Open Rush Initiation</td>
+                <td>1/26/2022, 22:00</td>
+                <td>The Owl Headquarters</td>
+                <td>This is totally a historical change from our probl</td>
+            </tr>
+            <tr>
+                <td>Soy Luna</td>
+                <td>Argentina</td>
+                <td>2016-2018</td>
+                <td>This show was my childhood and contributed immensely to my love of musical theater and skating. I still watch it today because it brings me comfort and fond memories of the past.</td>
+            </tr>
+        </table>
+        <p></p>
+        <p>Do you know any of these? Let me know at danielsturm@imaginaryemail.harvard so we can bond!</p>
+    </body>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        {%extends 'index.html' %} <!-- IS THIS CORRECT?? WANT TO EXTEND HEADER LAYOUT FROM INDEX.HTML - OR HAVE TO REFERENCE DJANGO AT BEGINNING??? -->
+
+    </head>
+
+    <body>
+<!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div id="my-navbar">
+                <a class="navbar-brand" href="index.html">wyd2nite</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="orgs.html">Organizations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="parties.html">Parties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Title -->
+        <h1 class="title">Post an event</h1>
+        <p>Are you an organization registered, affiliated, or involved with Harvard? Post your upcoming social events by submitting the form below!</p>
+    
+    <!-- Reference: https://getbootstrap.com/docs/4.0/components/forms/ (ADAPTED INTO FILE AS INFORMED THROUGH COMMUNICATION WITH CS50 HEADS ON NOV 27 AND CS50 ED PLATFORM)--> 
+    <!-- OK????-->
+
+    <!-- QUESTION: CAN WE MAKE VALIDATION BETTER? => E.G. FOR "EVENT DATE": NUMERICAL OR STH?? -->
+
+    <form>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationServer01">Organization Name</label>
+            <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Organization Name" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Event Name</label>
+            <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Event Name" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <!--DELETED FROM LAST TWO, ON ORIGINAL SOURCE (SEE ABOVE, BOOTSTRAP - always before "required"): value="Mark", value="Otto" (not necessary, right?????)-->
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServerUsername">Organization Email</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3">@</span>
+              </div>
+              <!-- QUESTION: WHAT IS ARIA-DESCRIBEDBY="INPUTGROUPPREPEND3" ETC. BELOW?? -->
+              <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Organization Email" aria-describedby="inputGroupPrepend3" required>
+              <div class="invalid-feedback">
+                This email address doesn't exist :/
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationServer03">Event Location</label>
+            <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Event Location" required>
+            <div class="invalid-feedback">
+              This location doesn't exist :/
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationServer04">Event Date</label>
+            <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="Event Date/Time" required>
+            <div class="invalid-feedback">
+              This date/time has an invalid format :/
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationServer05">Event Description</label>
+            <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Event Description" required>
+            <div class="invalid-feedback">
+              This description has an invalid format :/
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+            <label class="form-check-label" for="invalidCheck3">
+              Agree to <a href="https://dso.college.harvard.edu/files/dso/files/20-21_recognized_student_organization_resource_guide.pdf?m=1624983128">Harvard's Student Organization Policy</a>
+            </label>
+            <div class="invalid-feedback">
+              No agreement, no event :/
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Post event</button>
+      </form>
+
+    </body>
+
+</html>

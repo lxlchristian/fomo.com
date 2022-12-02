@@ -1,0 +1,84 @@
+/* Font (ALL) */
+
+body {
+    font-family: "Changa", sans-serif;
+    text-align: center;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+p {
+  color: #8f8f8f;
+  font-size: 0.9rem;
+}
+
+a {
+  color: black;
+}
+
+input {
+  margin: 2% 0;
+}
+
+/* Images */
+img {
+  width: 20%;
+  height: auto;
+  padding: 5%;
+}
+
+/* Buttons */
+button {
+  margin: 3%;
+}
+
+/* Containers */
+/* .container-fluid {
+    padding: 7% 15%;
+} */
+
+/* Cards */
+card {
+    width: 18rem;
+}
+
+
+/* Sections */
+.coloured-section {
+  background-color: #0d1b2a;
+  color: white;
+}
+
+.white-section {
+  background-color: #f2e9e4;
+  color: #0d1b2a;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    padding-left: 40px;
+    text-align: left;
+}
+
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding-left: 36px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Feedback form */
+.feedback-div {
+  padding: 2% 0;
+}
