@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}        
+        
+        <!-- Page Title -->
+        <h1 class="title">Login</h1>
+    
+    <!-- Reference: CS50 Pset 9 Staff Solutions (https://finance.cs50.net/login) - (ADAPTED INTO FILE AS INFORMED THROUGH COMMUNICATION WITH CS50 HEADS ON NOV 27 AND CS50 ED PLATFORM, and communication with TFs / tutorials, e.g. Kelly Ding) -->
+
+        <main class="container py-5 text-center">
+
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="email" placeholder="Your email address" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Your password" type="password">
+        </div>
+
+        <!-- Reference: https://getbootstrap.com/docs/4.0/examples/sign-in/ -->
+        
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+
+        </main>
+
+        <!-- UPDATE: AWAY -->
+        
+        <footer class="mb-5 small text-center text-muted">
+            <a href=...>Organization Login</a> <!-- LINK TO SECOND ORGANIZATION LOGIN PAGE???-->
+        </footer>
+
+{% endblock %}

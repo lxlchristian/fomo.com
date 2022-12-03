@@ -1,41 +1,10 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-    <head>
-
-        {%extends 'index.html' %} <!-- IS THIS CORRECT?? WANT TO EXTEND HEADER LAYOUT FROM INDEX.HTML - OR HAVE TO REFERENCE DJANGO AT BEGINNING??? -->
-
-    </head>
-
-    <body>
-<!-- Navigation bar -->
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div id="my-navbar">
-                <a class="navbar-brand" href="index.html">wyd2nite</a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="orgs.html">Organizations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="parties.html">Parties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+{% extends "layout.html" %}
 
         <!-- Page Title -->
         <h1 class="title">Post an event</h1>
         <p>Are you an organization registered, affiliated, or involved with Harvard? Post your upcoming social events by submitting the form below!</p>
     
-    <!-- Reference: https://getbootstrap.com/docs/4.0/components/forms/ (ADAPTED INTO FILE AS INFORMED THROUGH COMMUNICATION WITH CS50 HEADS ON NOV 27 AND CS50 ED PLATFORM)--> 
-    <!-- OK????-->
+    <!-- Reference: https://getbootstrap.com/docs/4.0/components/forms/ (ADAPTED INTO FILE AS INFORMED THROUGH COMMUNICATION WITH CS50 HEADS ON NOV 27, CS50 ED PLATFORM, and also communication with TFs - e.g. Kelly Ding)--> 
 
     <!-- QUESTION: CAN WE MAKE VALIDATION BETTER? => E.G. FOR "EVENT DATE": NUMERICAL OR STH?? -->
 
@@ -107,6 +76,4 @@
         <button class="btn btn-primary" type="submit">Post event</button>
       </form>
 
-    </body>
-
-</html>
+{% endblock %}

@@ -1,40 +1,15 @@
 <!-- Displays all the parties happening (extended version of the truncated one on the homepage) [kinda like “public calendar”, or list] [+ like count for individual] -->
 
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        {%extends 'index.html' %} <!-- IS THIS CORRECT?? WANT TO EXTEND HEADER LAYOUT FROM INDEX.HTML - OR HAVE TO REFERENCE DJANGO AT BEGINNING??? -->
-    </head>
-    <body>
-        <!-- Navigation bar -->
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div id="my-navbar">
-                <a class="navbar-brand" href="index.html">wyd2nite</a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="orgs.html">Organizations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="parties.html">Parties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+{% extends "layout.html"}
 
         <!-- Page Title -->
         <h1 class="title">Parties</h1>
         <p>An overview of what parties are scheduled.</p>  <!-- QUESTION: DOES OUR PROGRAM HAVE THE ABILITY TO REMOVE PASSED EVENTS?-->
 
         <!-- IMPORTANT QUESTION: CAN WE "TRANSFER" INPUT FROM INDEX.HTML TO HERE INSTEAD OF HAVING TO COPY EVERYTHING AGAIN??-->
-        <!-- SECOND IMPORTANT QUESTION: HOW TO ADD BUTTONS TO LIST??-->
-        <h2>Full party list</h2> <!-- CAN WE SORT THIS LIST BY DATE??? +CAN USER-INPUTTED EVENTS BE APPENDED AUTOMATICALLY?? (SAME TWO QUESTIONS FOR CARD LISTS ON INDEX.HTML!!))-->
+        <!-- SECOND IMPORTANT QUESTION: HOW TO ADD BUTTONS/links (for orgs -> org.html, for parties -> party.html) TO LIST??-->
+        
+        <h2>Full party list</h2> <!-- CAN WE SORT THIS LIST BY DATE??? +CAN USER-INPUTTED EVENTS [from plan_party.html] BE APPENDED AUTOMATICALLY?? (SAME TWO QUESTIONS FOR CARD LISTS ON INDEX.HTML!!))-->
         <table>
             <tr>
                 <th>Organization</th>
@@ -68,4 +43,5 @@
         </table>
         <p></p>
         <p>Do you know any of these? Let me know at danielsturm@imaginaryemail.harvard so we can bond!</p>
-    </body>
+
+{% endblock%}
