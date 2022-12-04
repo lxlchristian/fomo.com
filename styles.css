@@ -1,16 +1,16 @@
-/* Font (ALL) */
+/* CSS stylesheet for entire website; select styling elements represented. See also: CS50 Problem Set 8, 9 */
 
 body {
     font-family: "Changa", sans-serif;
     text-align: center;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h5 {
   font-weight: 500;
 }
 
 p {
-  color: #8f8f8f;
+  color: #123c5f;
   font-size: 0.9rem;
 }
 
@@ -35,7 +35,7 @@ button {
 }
 
 /* Containers */
-/* .container-fluid {
+.container-fluid {
     padding: 7% 15%;
 } */
 
@@ -44,16 +44,10 @@ card {
     width: 18rem;
 }
 
-
 /* Sections */
 .coloured-section {
-  background-color: #0d1b2a;
+  background-color: #2a4c70;
   color: white;
-}
-
-.white-section {
-  background-color: #f2e9e4;
-  color: #0d1b2a;
 }
 
 /* Navigation Bar */
@@ -64,8 +58,8 @@ card {
 }
 
 .navbar-brand {
-  font-family: "Ubuntu";
-  font-size: 2.5rem;
+  font-family: "Changa";
+  font-size: 3rem;
   font-weight: bold;
 }
 

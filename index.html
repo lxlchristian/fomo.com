@@ -1,3 +1,5 @@
+<!-- Homepage displaying shortened overview of recently posted and most popular parties, as well as (like the other pages) further links on tehe navbar -->
+
 {% extends "layout.html" %}
 
         <!-- Title -->
@@ -9,7 +11,6 @@
         </section>
 
         <!-- Party Cards (see: https://getbootstrap.com/docs/5.2/components/card/)-->
-
         <!-- On back end: Limit by 3, FROM "MOST RECENTLY POSTED"-->
         <h2>Recently posted</h2>
         {% for party in parties %}
@@ -36,28 +37,7 @@
                     <a href="party.html" class="btn btn-primary">More</a>
                 </div>
             </div>
-       {% endfor %} 
+        {% endfor %} 
         </div>
-
-
-        <!-- Links to other pages -->
-        <!-- <section id="features" class="coloured-section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <a class="page-link" href="hate-test.html">Do I hate you?</a>
-                        <p>Find out if I hate you or not.</p>
-                    </div>
-                    <div class="col-lg-4">
-                        <a class="page-link" href="poem.html">Hate (An Acrostic Poem)</a>
-                        <p>Sometimes, the philosophies of the world are best captured through poetry.</p>
-                    </div>
-                    <div class="col-lg-4">
-                        <a class="page-link" href="feedback.html">Feedback</a>
-                        <p>Let me know what you think!</p>
-                    </div>
-                </div>
-            </div>
-        </section> -->
 
 {% endblock %}

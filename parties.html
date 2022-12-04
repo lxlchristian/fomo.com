@@ -1,47 +1,33 @@
-<!-- Displays all the parties happening (extended version of the truncated one on the homepage) [kinda like “public calendar”, or list] [+ like count for individual] -->
+<!-- Displays overview all parties happening on campus (extended version of the truncated one on the homepage; function of detailed "public calendar", since login/registration not required to view) -->
 
 {% extends "layout.html"}
 
         <!-- Page Title -->
         <h1 class="title">Parties</h1>
-        <p>An overview of what parties are scheduled.</p>  <!-- QUESTION: DOES OUR PROGRAM HAVE THE ABILITY TO REMOVE PASSED EVENTS?-->
+        <p>An overview of what parties are scheduled.</p>  <!-- !!!! BACKEND: REMOVE PASSED EVENTS? !!!!! -->
 
-        <!-- IMPORTANT QUESTION: CAN WE "TRANSFER" INPUT FROM INDEX.HTML TO HERE INSTEAD OF HAVING TO COPY EVERYTHING AGAIN??-->
-        <!-- SECOND IMPORTANT QUESTION: HOW TO ADD BUTTONS/links (for orgs -> org.html, for parties -> party.html) TO LIST??-->
-        
-        <h2>Full party list</h2> <!-- CAN WE SORT THIS LIST BY DATE??? +CAN USER-INPUTTED EVENTS [from plan_party.html] BE APPENDED AUTOMATICALLY?? (SAME TWO QUESTIONS FOR CARD LISTS ON INDEX.HTML!!))-->
+        <h2>Full party list</h2> <!-- BACKEND: SORT THIS LIST BY DATE??? +CAN USER-INPUTTED EVENTS [from plan_party.html] BE APPENDED AUTOMATICALLY?? (SAME TWO QUESTIONS FOR CARD LISTS ON INDEX.HTML!!))-->
         <table>
+            {% for party in parties %}
             <tr>
                 <th>Organization</th>
                 <th>Event Name</th>
                 <th>Event Date</th>
                 <th>Event Location</th>
                 <th>Description</th>
-                <th>Average Previous Rating</th> <!-- Category denoting average ratings (OUT OF 5) for each party from past years. -->
+                <th>Likes</th> <!-- Category for like count (see party.html); a way of showing interest and recommending for users -->
+                <th>More</th>
             </tr>
             <tr>
-                <td>FYE Office</td>
-                <td>QuadFest</td>
-                <td>1/25/2022, 19:30</td>
-                <td>Radcliffe Quadrangle</td>
-                <td>Join the QuadFest to find out just how long your walk to class will be next year.</td>
-                <td>3.1</td>
-            </tr>
-            <tr>
-                <td>The Owl</td>
-                <td>Open Rush Initiation</td>
-                <td>1/26/2022, 22:00</td>
-                <td>The Owl Headquarters</td>
-                <td>This is totally a historical change from our probl</td>
-            </tr>
-            <tr>
-                <td>Soy Luna</td>
-                <td>Argentina</td>
-                <td>2016-2018</td>
-                <td>This show was my childhood and contributed immensely to my love of musical theater and skating. I still watch it today because it brings me comfort and fond memories of the past.</td>
+                <td>{{ party.org }}</td>
+                <td>{{ party.name }}</td>
+                <td>{{ party.date }}</td>
+                <td>{{ party.location }}</td>
+                <td>{{ party.description }}</td>
+                <td>{{ party.likes }}</td>
+                <td><a href="party.html" class="btn btn-primary">More</a></td>  <!-- IS THIS BUTTON / LINK TO INDIVIDUAL PARTY SITE FOR EACH PARTY POSSIBLE (THROUGH DIFFERENTIATION IN BACK END)??-->
             </tr>
         </table>
-        <p></p>
-        <p>Do you know any of these? Let me know at danielsturm@imaginaryemail.harvard so we can bond!</p>
-
-{% endblock%}
+        {% endfor %}
+        
+{% endblock %}

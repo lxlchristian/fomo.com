@@ -1,10 +1,11 @@
+<!-- Essentially like login.html, but for first-time usesrs: If successful, allows user to access wyd2nite-specific features (e.g. plan_party.html for organizations and user_history.html for students). Enables differentiation between student users and organization users through "radio button" input and data passing into back end -->
+
 {% extends "layout.html" %}
 
         <!-- Page Title -->
         <h1 class="title">Register</h1>
     
-    <!-- Reference: CS50 Pset 9 (see staff solutions: https://finance.cs50.net/register) (ADAPTED INTO FILE AS INFORMED THROUGH COMMUNICATION WITH CS50 HEADS ON NOV 27 AND CS50 ED PLATFORM)--> 
-    <!-- OK???? -->
+    <!-- Reference: CS50 Pset 9 (see staff solutions: https://finance.cs50.net/register) (ADAPTED INTO FILE AS INFORMED THROUGH COMMUNICATION WITH CS50 HEADS ON NOV 27, CS50 ED PLATFORM, AND TUTORIALS SUCH AS WITH KELLY DING (TRIED OWN TF, E.G. ALEX, BUT WAS CANCELLED))--> 
 
     <!-- CHRISTIAN - BACKEND: Take in value of student or organization, put into database => each account then either student or organization => when login used next time, right path after automatically. Also, for back end: Ensure that "register" does not accept two emails (like usernames) twice - i.e. no two people have same email. -->
 
@@ -29,10 +30,7 @@
         <div class="mb-3">
             <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm new password" type="password">
         </div>
-
-        <!-- Reference: https://getbootstrap.com/docs/4.0/examples/sign-in/ -->
-        <!-- =>IS THIS POSSIBLE, WITH FLASK ETC.??-->
-
+        
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
 

@@ -1,1 +1,37 @@
-<!-- one general page, fill in from back end; with placeholders => for photo: tag "img" => see photo)
+<!-- Displays general profile information about one of the organizations that have previously registered / posted events -->
+
+{% extends "layout.html" %}
+
+<!-- Page Title -->
+{% for org in parties %}
+<h1 class="title">{{ org.name }}</h1>
+<p>{{ org.description }}</p> <!-- (Maybe have database with descriptions of each organization!!!) -->
+{% endfor %}
+
+<!-- Reference: Bootstrap cards - see: https://getbootstrap.com/docs/5.0/components/card/ -->
+{% for org in parties %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="card border-info mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <!-- Analogous to party.html: "org.photo" describes photos associated with each organization in the back end database -->
+                <img src="{{ org.photo }}" class="img-fluid rounded-start" alt="Card image cap">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Address: {{ org.address }}</h5>
+                    <p class="card-text">Email: {{ org.email }}</p>
+                    <p class="card-text">Parties: {{ org.parties }}</p>
+                    <p class="card-text">Likes: {{ org.likes }}</p>
+                </div>
+                <!-- IMPLEMENT LIKE COUNTER (back end), INSTEAD OF COMMENTS (recommended by TF, Matthew Andrews, also again confirmed that use of cited sources is fine) -->
+                <!-- Reference: https://codepen.io/Sero13/pen/Bqdmvr; RUN QUERY AND ADD 1 PER "CLICK" --> 
+                <a href="#" class="like-counter">Like</a> <!-- (CHRISTIAN: WHICH HREF HERE???? + ONLY ALLOW TO CLICK LIKE COUNT IF LOGGED IN?? (BACK END?))-->
+                <span class="click-text"><a id="clicks"></span>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
