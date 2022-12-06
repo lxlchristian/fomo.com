@@ -5,6 +5,7 @@ from app import db
 
 ##CONFIGURE TABLES
 class User(UserMixin, db.Model):
+    '''The User table contains id, email, password, name and is_org fields'''
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(250), unique=True, nullable=False)
@@ -20,6 +21,7 @@ class User(UserMixin, db.Model):
 
 
 class Org(db.Model):
+    '''The Org table contains id, name, description, img_url, and user_id ForeignKey'''
     __tablename__ = "orgs"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
@@ -33,6 +35,7 @@ class Org(db.Model):
 
 
 class Party(db.Model):
+    '''The Party table contains id, title, date, time, duration, location, description, img_url fields, and host_id ForeignKey'''
     __tablename__ = "parties"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), nullable=False)
@@ -64,6 +67,7 @@ class Attendance(db.Model):
 
 
 class Review(db.Model):
+    '''The Review table contains id, music, vibes, drinks, comment fields, and reviewer_id and party_id ForeignKeys'''
     __tablename__ = "reviews"
     id = db.Column(db.Integer, primary_key=True)
     
