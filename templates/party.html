@@ -6,12 +6,11 @@
 {% include "header.html" %}
 
 <!-- Party details -->
-<h1 class="title">{{ party.name }}</h1>
-<p>{{ party.description }}</p>
+<h1 class="title">{{ party.title }}</h1>
 
 <!-- Reference: Bootstrap cards - see: https://getbootstrap.com/docs/5.0/components/card/ -->
-<div class="card mb-3" style="max-width: 540px;">
-   <div class="card border-info mb-3">
+<div class="col d-flex justify-content-center">
+   <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
          <div class="col-md-4">
             <img src="{{ party.img_url }}" class="img-fluid rounded-start">

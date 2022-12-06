@@ -1,8 +1,4 @@
 <!-- Homepage displaying shortened overview of recently posted and most popular parties, as well as (like the other pages) further links on tehe navbar -->
-{% extends "bootstrap/base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-
-{% block content %}
 {% include "header.html" %}
 
         <!-- Title -->
@@ -21,21 +17,21 @@
         {% endif %}
         {% endwith %}
 
-        <!-- Party Cards (see: https://getbootstrap.com/docs/5.2/components/card/)-->
-        <h2>Coming soon</h2>
-
+        <!-- Party Cards (see: https://getbootstrap.com/docs/5.2/components/card/) -->
+        <h2>Parties coming soon</h2>
         {% for i in range(num_parties) %}
-        <div class="card">
-            <div class="card border-info mb-3">
-            <img class="card-img-top" src= "{{ parties[i].img_url }}" alt="Card image cap">
-                <div class="card-body">
-                    <!-- To get the name of the host organization, get the party's id and subtract 1 to get the index in the orgs list -->
-                    <h2 class="card-title">{{ orgs[i].name }} - {{ parties[i].title }}</h5>
-                    <p class="card-text">{{ parties[i].date }} - {{ parties[i].description }}</p>
-                    <a href="{{ url_for('party', party_title=parties[i].title, party_index=0) }}" class="btn btn-primary">Details</a>
-                </div>
+        <!-- Center cards: https://www.folkstalk.com/2022/09/center-cards-bootstrap-with-code-examples.html -->
+        <div class="col d-flex justify-content-center">
+            <div class="card">
+                <img class="card-img-top" src= "{{ parties[i].img_url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <!-- To get the name of the host organization, get the party's id and subtract 1 to get the index in the orgs list -->
+                        <h3 class="card-title">{{ orgs[i].name }} - {{ parties[i].title }}</h5>
+                        <p class="card-text">{{ parties[i].date }} - {{ parties[i].description }}</p>
+                        <a href="{{ url_for('party', party_title=parties[i].title, party_index=0) }}" class="btn btn-primary">Details</a>
+                    </div>
             </div>
         </div>
         {% endfor %}
 
-{% endblock %}
+{% include "footer.html" %}

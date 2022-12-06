@@ -21,13 +21,20 @@ div {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h5 {
+h1, h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+h3, h5 {
   font-weight: 500;
 }
 
 p {
-  color: #123c5f;
-  font-size: 0.9rem;
+  color: #fc9988;
+  font-size: 1.1rem;
   margin-top: 5%;
 }
 
@@ -39,13 +46,6 @@ input {
   margin: 2% 0;
 }
 
-/* Images */
-/* img {
-  width: 20%;
-  height: auto;
-  padding: 5%;
-} */
-
 /* Buttons */
 button {
   margin: 3%;
@@ -53,12 +53,12 @@ button {
 
 /* Containers */
 .container-fluid {
-    padding: 7% 15%;
+  padding: 7% 15%;
 } */
 
-/* Cards */
-card {
-    width: 18rem;
+/* Cards - center! */
+.card, .car {
+  width: 100%;
 }
 
 /* Sections */

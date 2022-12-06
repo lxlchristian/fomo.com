@@ -1,3 +1,5 @@
+{% include "header.html" %}
+
 <!-- Displays overview all parties happening on campus (extended version of the truncated one on the homepage; function of detailed "public calendar", since login/registration not required to view) -->
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
@@ -70,3 +72,5 @@
     {% endfor %}
  </table>
 {% endblock %}
+
+{% include "footer.html" %}
