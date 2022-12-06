@@ -2,7 +2,23 @@
 
 body {
     font-family: "Changa", sans-serif;
-    text-align: center;
+    margin: 5%;
+}
+
+.table-img {
+  width: 30%;
+}
+
+.card {
+  width: 50%;
+}
+
+.quick-form {
+  width: 30%;
+}
+
+div {
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h5 {
@@ -12,6 +28,7 @@ h1, h2, h3, h5 {
 p {
   color: #123c5f;
   font-size: 0.9rem;
+  margin-top: 5%;
 }
 
 a {
@@ -23,11 +40,11 @@ input {
 }
 
 /* Images */
-img {
+/* img {
   width: 20%;
   height: auto;
   padding: 5%;
-}
+} */
 
 /* Buttons */
 button {
@@ -48,31 +65,4 @@ card {
 .coloured-section {
   background-color: #2a4c70;
   color: white;
-}
-
-/* Navigation Bar */
-
-.navbar {
-    padding-left: 40px;
-    text-align: left;
-}
-
-.navbar-brand {
-  font-family: "Changa";
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.nav-item {
-  padding-left: 36px;
-}
-
-.nav-link {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-/* Feedback form */
-.feedback-div {
-  padding: 2% 0;
 }
