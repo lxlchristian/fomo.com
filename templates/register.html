@@ -1,0 +1,40 @@
+<!-- Essentially like login.html, but for first-time usesrs: If successful, allows user to access wyd2nite-specific features (e.g. plan_party.html for organizations and user_history.html for students). Enables differentiation between student users and organization users through "radio button" input and data passing into back end -->
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+<!-- Page Title -->
+<h1 class="title">Register</h1>
+<main class="container py-5 text-center">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+        <div class="container quick-form">
+            {% if user_type == "user" %}
+            <h3>Create your account.</h3>
+            {% else %}
+            <h3>Register your organization.</h3>
+            {% endif %}
+            <hr>
+                {{ form.csrf_token }}
+                {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            <hr>
+            {% if user_type == "user" %}
+            <h5><a href="{{ url_for('register', user_type='org') }}">Register as an organization instead</a></h5>
+            {% else %}
+            <h5><a href="{{ url_for('register', user_type='user') }}">Register as a user instead</a></h5>
+            {% endif %}
+            <p><a href="{{ url_for('login') }}">Already have an account? Sign in here.</a></p>
+        </div>
+
+</main>
+
+{% endblock %}

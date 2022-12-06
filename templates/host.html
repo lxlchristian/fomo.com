@@ -1,0 +1,19 @@
+<!-- Allows organization user to post events -->
+
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+        <!-- Page Title -->
+        <h1 class="title">Host your event.</h1>
+        <p>Are you an organization registered, affiliated, or involved with Harvard? Post your upcoming social events by submitting the form below!</p>
+    
+    <div class="container quick-form">
+      <hr>
+          {{ form.csrf_token }}
+          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+          <p>By submitting this form, you acknowledge and comply to <a href="https://dso.college.harvard.edu/files/dso/files/20-21_recognized_student_organization_resource_guide.pdf?m=1624983128">Harvard's Student Organization Policy</a></p>
+      <hr>
+  </div>
+{% endblock %}
