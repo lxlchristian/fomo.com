@@ -8,7 +8,6 @@ from functools import wraps
 from forms import HostPartyForm, UserRegisterForm, OrgRegisterForm, LoginForm, ReviewForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-import os
 
 
 app = Flask(__name__)
@@ -232,7 +231,7 @@ def organization(org_name, org_index=0):
 @login_required
 def parties():
     '''Renders a table of all the parties.'''
-    # Get a list of tuples of the form (<Party X>, <Org Y>)
+    # Get a list of tuples of the form (<Party X>, <Org Y>) and format using list comprehension
     dataset_soon = db.session.query(Party, Org).filter(Party.date >= datetime.today().date(), Party.host_id == Org.user_id).order_by(asc(Party.date)).all()
     parties_soon = [{"title": data[0].title, 
                      "desc": data[0].description, 
@@ -296,9 +295,13 @@ def party(party_title, party_index=0):
 
         # Send over the reviews and average ratings to be displayed at the bottom of the page
         # Get a list of tuplets of the form (<Review X>, <User Y>)
-        reviews = db.session.query(Review, User).filter(Review.party_id == party.id, User.id==Review.reviewer_id).all()
-        avg_ratings = { "music": db.session.query(func.avg(Review.music)).first()[0],
-                        "vibes": db.session.query(func.avg(Review.vibes)).first()[0], 
-                        "drinks": db.session.query(func.avg(Review.drinks)).first()[0] }
-        return render_template("party.html", form=form, all_reviews=reviews, avg_ratings=avg_ratings, party=party, org=org, date_now=datetime.today().date())
+        dataset = db.session.query(Review, User).filter(Review.party_id == party.id, User.id==Review.reviewer_id).all()
+        # print(reviews)
+        # # Format data as a list of dicts using list comprehension
+        # orgs = [{"name": data[0].name, "desc": data[0].description, "img_url": data[0].img_url, "email": data[1].email} for data in dataset]
+
+        avg_ratings = { "music": "%.2f" % db.session.query(func.avg(sReview.music)).first()[0],
+                        "vibes": "%.2f" % db.session.query(func.avg(Review.vibes)).first()[0], 
+                        "drinks": "%.2f" % db.session.query(func.avg(Review.drinks)).first()[0] }
+        return render_template("party.html", form=form, all_reviews=dataset, avg_ratings=avg_ratings, party=party, org=org, date_now=datetime.today().date())
 
