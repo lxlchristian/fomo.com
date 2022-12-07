@@ -27,9 +27,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('homepage') }}">Home</a>
-                    </li>
                     {% if not current_user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('login') }}">Sign in</a>
@@ -38,6 +35,9 @@
                             <a class="nav-link" href="{{ url_for('register', user_type='user') }}">Register</a>
                         </li>
                     {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('homepage') }}">Home</a>
+                        </li>
                         {% if current_user.is_org %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('host') }}">Host an event</a>
