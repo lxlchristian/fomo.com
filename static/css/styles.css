@@ -2,20 +2,10 @@
 
 body {
     font-family: "Changa", sans-serif;
-    margin: 5%;
+    background-color: #FEFCF3;
 }
 
-.table-img {
-  width: 30%;
-}
-
-.card {
-  width: 50%;
-}
-
-.quick-form {
-  width: 30%;
-}
+/* General styling */
 
 div {
   overflow-x: hidden;
@@ -33,7 +23,6 @@ h3, h5 {
 }
 
 p {
-  color: #fc9988;
   font-size: 1.1rem;
   margin-top: 5%;
 }
@@ -44,6 +33,75 @@ a {
 
 input {
   margin: 2% 0;
+}
+
+/* Navigation bar */
+
+.navbar {
+  height: 20%;
+  padding: 3%;
+  background-color: #F0DBDB;
+}
+
+.navbar-brand {
+  font-size: 6rem;
+  height: 20%;
+}
+
+.navbar-collapse {
+  font-size: 2rem;
+  height: 20%;
+}
+
+/* Slogan */
+
+h1.slogan {
+  font-size: 7.5rem;
+  font-weight: 700;
+}
+
+h2.slogan {
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+p.slogan {
+  font-weight: 700;
+}
+
+/* Table display */
+
+.table-img {
+  width: 30%;
+}
+
+table {
+  font-size: small;
+}
+
+/* Card display */
+
+.card {
+  width: 50%;
+  background-color: #F5EBE0;
+}
+
+.card-img {
+  vertical-align: middle;
+}
+
+.card-title {
+  font-size: 2rem;
+}
+
+.card-text {
+  font-size: 1.4rem;
+}
+
+/* Form display */
+
+.quick-form {
+  width: 30%;
 }
 
 /* Buttons */
@@ -63,6 +121,6 @@ button {
 
 /* Sections */
 .coloured-section {
-  background-color: #2a4c70;
+  background-color: #DBA39A;
   color: white;
 }

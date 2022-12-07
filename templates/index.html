@@ -1,37 +1,40 @@
 <!-- Homepage displaying shortened overview of recently posted and most popular parties, as well as (like the other pages) further links on tehe navbar -->
-{% include "header.html" %}
+{% extends "base.html" %}
 
-        <!-- Title -->
-        <section class="coloured-section">
-            <div class="container-fluid">
-                <h1>wyd2nite - "What you doing tonight?"</h1>
-                <p>The party compass for Harvard College students with FOMO. </p>
-            </div>
-        </section>
-        
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <p style="color:red">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+{% block title %}Homepage{% endblock %}
 
-        <!-- Party Cards (see: https://getbootstrap.com/docs/5.2/components/card/) -->
-        <h2>Parties coming soon</h2>
-        {% for i in range(num_parties) %}
-        <!-- Center cards: https://www.folkstalk.com/2022/09/center-cards-bootstrap-with-code-examples.html -->
-        <div class="col d-flex justify-content-center">
-            <div class="card">
-                <img class="card-img-top" src= "{{ parties[i].img_url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <!-- To get the name of the host organization, get the party's id and subtract 1 to get the index in the orgs list -->
-                        <h3 class="card-title">{{ orgs[i].name }} - {{ parties[i].title }}</h5>
-                        <p class="card-text">{{ parties[i].date }} - {{ parties[i].description }}</p>
-                        <a href="{{ url_for('party', party_title=parties[i].title, party_index=0) }}" class="btn btn-primary">Details</a>
-                    </div>
-            </div>
+{% block page_content %}
+    <!-- Title -->
+    <section class="coloured-section">
+        <div class="container-fluid">
+            <h1 class="slogan">Got FOMO?</h1>
+            <h2 class="slogan">Come find out where to go.</h1>
+            <p class="slogan">A Harvard College party compass. </p>
         </div>
+    </section>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
         {% endfor %}
+    {% endif %}
+    {% endwith %}
 
-{% include "footer.html" %}
+    <!-- Party Cards (see: https://getbootstrap.com/docs/5.2/components/card/) -->
+    <h2>Parties coming soon</h2>
+    {% for i in range(num_parties) %}
+    <!-- Center cards: https://www.folkstalk.com/2022/09/center-cards-bootstrap-with-code-examples.html -->
+    <div class="col d-flex justify-content-center">
+        <div class="card">
+            <img class="card-img-top" src= "{{ parties[i].img_url }}" alt="Card image cap">
+                <div class="card-body">
+                    <!-- To get the name of the host organization, get the party's id and subtract 1 to get the index in the orgs list -->
+                    <h3 class="card-title">{{ orgs[i].name }} - {{ parties[i].title }}</h5>
+                    <p class="card-text">{{ parties[i].date }} - {{ parties[i].description }}</p>
+                    <a href="{{ url_for('party', party_title=parties[i].title, party_index=0) }}" class="btn btn-primary">Details</a>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

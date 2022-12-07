@@ -1,76 +1,72 @@
-{% include "header.html" %}
-
 <!-- Displays overview all parties happening on campus (extended version of the truncated one on the homepage; function of detailed "public calendar", since login/registration not required to view) -->
-{% extends "bootstrap/base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% block content %}
-{% include "header.html" %}
+{% extends "base.html" %}
 
-<!-- Page Title -->
-<h1 class="title">Parties</h1>
-<p>An overview of what parties are scheduled.</p>
+{% block title %}Parties{% endblock %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<p style="color:red">{{ message }}</p>
-{% endfor %}
-{% endif %}
-{% endwith %}
+{% block page_content %}
+   <!-- Page Title -->
+   <h1 class="title">Parties</h1>
+   <p>An overview of what parties are scheduled.</p>
 
-<!-- Table displaying upcoming parties -->
-<h2>Upcoming Parties</h2>
-<table class="table">
-   <tr>
-      <th scope="col"></th>
-      <th scope="col">Organization</th>
-      <th scope="col">Event Name</th>
-      <th scope="col">Event Date</th>
-      <th scope="col">Event Time</th>
-      <th scope="col">Event Location</th>
-      <th scope="col">Description</th>
-      <th scope="col">Party Information</th>
-   </tr>
-   {% for party in parties_soon %}
-   <tr>
-      <td class="w-25"><img class="img-fluid img-thumbnail" src= "{{ party[0].img_url }}"></td>
-      <td><a href="{{ url_for('organization', org_name=party[1].name) }}">{{ party[1].name }}</a></td>
-      <td>{{ party[0].title }}</td>
-      <td>{{ party[0].date.strftime("%d %b, %Y")  }}</td>
-      <td>{{ party[0].time.strftime("%I.%M %p") }}</td>
-      <td>{{ party[0].location }}</td>
-      <td>{{ party[0].description }}</td>
-      <td><a href="{{ url_for('party', party_title=party[0].title, party_index=0) }}" class="btn btn-primary">More</a></td>
-   </tr>
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+   {% for message in messages %}
+   <p style="color:red">{{ message }}</p>
    {% endfor %}
-</table>
+   {% endif %}
+   {% endwith %}
 
-<!-- Table displaying parties that are over -->
-<h2>Past Parties</h2>
-<table class="table">
-    <tr>
-       <th scope="col"></th>
-       <th scope="col">Organization</th>
-       <th scope="col">Event Name</th>
-       <th scope="col">Event Date</th>
-       <th scope="col">Event Time</th>
-       <th scope="col">Event Location</th>
-       <th scope="col">Description</th>
-       <th scope="col">Party Information</th>
-    </tr>
-    {% for party in parties_over %}
-    <tr>
-       <td class="w-25"><img class="img-fluid img-thumbnail" src= "{{ party[0].img_url }}"></td>
-       <td><a href="{{ url_for('organization', org_name=party[1].name) }}">{{ party[1].name }}</a></td>
-       <td>{{ party[0].title }}</td>
-       <td>{{ party[0].date }}</td>
-       <td>{{ party[0].time.strftime("%I.%M %p") }}</td>
-       <td>{{ party[0].location }}</td>
-       <td>{{ party[0].description }}</td>
-       <td><a href="{{ url_for('party', party_title=party[0].title, party_index=0) }}" class="btn btn-primary">More</a></td>
-    </tr>
-    {% endfor %}
- </table>
-{% endblock %}
+   <!-- Table displaying upcoming parties -->
+   <h2>Upcoming Parties</h2>
+   <table class="table">
+      <tr>
+         <th scope="col"></th>
+         <th scope="col">Organization</th>
+         <th scope="col">Name</th>
+         <th scope="col">Date</th>
+         <th scope="col">Time</th>
+         <th scope="col">Location</th>
+         <th scope="col">Description</th>
+         <th scope="col">Party Information</th>
+      </tr>
+      {% for party in parties_soon %}
+      <tr>
+         <td class="w-25"><img class="img-fluid img-thumbnail" src= "{{ party.img_url }}"></td>
+         <td><a href="{{ url_for('organization', org_name=party.org_name) }}">{{ party.org_name }}</a></td>
+         <td>{{ party.title }}</td>
+         <td>{{ party.date  }}</td>
+         <td>{{ party.time  }}</td>
+         <td>{{ party.location }}</td>
+         <td>{{ party.desc }}</td>
+         <td><a href="{{ url_for('party', party_title=party.title, party_index=0) }}" class="btn btn-primary">More</a></td>
+      </tr>
+      {% endfor %}
+   </table>
 
-{% include "footer.html" %}
+   <!-- Table displaying parties that are over -->
+   <h2>Past Parties</h2>
+   <table class="table">
+      <tr>
+         <th scope="col"></th>
+         <th scope="col">Organization</th>
+         <th scope="col">Name</th>
+         <th scope="col">Date</th>
+         <th scope="col">Time</th>
+         <th scope="col">Location</th>
+         <th scope="col">Description</th>
+         <th scope="col">Party Information</th>
+      </tr>
+      {% for party in parties_over %}
+      <tr>
+         <td class="w-25"><img class="img-fluid img-thumbnail" src= "{{ party.img_url }}"></td>
+         <td><a href="{{ url_for('organization', org_name=party.org_name) }}">{{ party.org_name }}</a></td>
+         <td>{{ party.title }}</td>
+         <td>{{ party.date }}</td>
+         <td>{{ party.time }}</td>
+         <td>{{ party.location }}</td>
+         <td>{{ party.description }}</td>
+         <td><a href="{{ url_for('party', party_title=party.title, party_index=0) }}" class="btn btn-primary">More</a></td>
+      </tr>
+      {% endfor %}
+   </table>
+ {% endblock %}

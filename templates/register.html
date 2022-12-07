@@ -1,11 +1,10 @@
 <!-- Essentially like login.html, but for first-time usesrs: If successful, allows user to access wyd2nite-specific features (e.g. plan_party.html for organizations and user_history.html for students). Enables differentiation between student users and organization users through "radio button" input and data passing into back end -->
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block content %}
-{% include "header.html" %}
+{% block title %}Register{% endblock %}
 
-<!-- Page Title -->
+{% block page_content %}
 <h1 class="title">Register</h1>
 <main class="container py-5 text-center">
 
@@ -36,5 +35,5 @@
         </div>
 
 </main>
-
 {% endblock %}
+

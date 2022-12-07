@@ -1,67 +1,70 @@
-<!-- Displays general profile information about one of the parties previously posted -->
-{% extends "bootstrap/base.html" %}
+<!-- Displays general profile information about one of the parties previously posted, allowing for comment -->
+{% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block content %}
-{% include "header.html" %}
+{% block title %}{{ party.title }}{% endblock %}
 
-<!-- Party details -->
-<h1 class="title">{{ party.title }}</h1>
+{% block page_content %}
+   <!-- Party details -->
+   <h1 class="title">Information about {{ party.title }}</h1>
 
-<!-- Reference: Bootstrap cards - see: https://getbootstrap.com/docs/5.0/components/card/ -->
-<div class="col d-flex justify-content-center">
-   <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-         <div class="col-md-4">
-            <img src="{{ party.img_url }}" class="img-fluid rounded-start">
-         </div>
-         <div class="col-md-8">
-            <div class="card-body">
-               <h5 class="card-title">Organized by: {{ org }}</h5>
-               <p class="card-text">{{ party.description }}</p>
-               <p class="card-text">Date: {{ party.date.strftime("%d %b %Y") }}, {{ party.time.strftime("%I.%M %p") }}</p>
-               <p class="card-text">Location: {{ party.location }}</p>
-               <!-- Make sure that there's at least one review and ratings are able to be displayed -->
-               {% if all_reviews %}
-               <p class="card-text">Music Rating: {{ avg_ratings["music"] }}</p>
-               <p class="card-text">Vibes Rating: {{ avg_ratings["vibes"] }}</p>
-               <p class="card-text">Drinks Rating: {{ avg_ratings["drinks"] }}</p>
-               {% endif %}
+   <!-- Reference: Bootstrap cards - see: https://getbootstrap.com/docs/5.0/components/card/ -->
+   <div class="col d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 540px;">
+         <div class="row g-0">
+            <div class="col-md-4">
+               <img src="{{ party.img_url }}" class="card-img img-fluid rounded-start">
+            </div>
+            <div class="col-md-8">
+               <div class="card-body">
+                  <h5 class="card-title">Organized by: <a href="{{ url_for('organization', org_name=org.name) }}">{{ org.name }}</a></h5>
+                  <p class="card-text">{{ party.description }}</p>
+                  <p class="card-text">Date: {{ party.date.strftime("%d %b %Y") }}, {{ party.time.strftime("%I.%M %p") }}</p>
+                  <p class="card-text">Location: {{ party.location }}</p>
+                  <!-- Make sure that there's at least one review and ratings are able to be displayed -->
+                  {% if all_reviews %}
+                  <p class="card-text">Music Rating: {{ avg_ratings["music"] }}</p>
+                  <p class="card-text">Vibes Rating: {{ avg_ratings["vibes"] }}</p>
+                  <p class="card-text">Drinks Rating: {{ avg_ratings["drinks"] }}</p>
+                  {% endif %}
+               </div>
             </div>
          </div>
       </div>
    </div>
-</div>
 
-<!-- Party review section -->
-<hr>
-{% if party.date < date_now and current_user.is_authenticated %}
+   <!-- Party review section -->
+   <hr>
+   {% if party.date < date_now and current_user.is_authenticated %}
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <p style="color:red">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+               <p style="color:red">{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+         {% endwith %}
 
-    <div class="container quick-form">
-        <h3>Let everyone know about the party.</h3>
-        <hr>
-            {{ form.csrf_token }}
-            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
-        <hr>
-    </div>
+      <div class="container quick-form">
+         <h3>Let everyone know about the party.</h3>
+         <hr>
+               {{ form.csrf_token }}
+               {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
 
-{% endif %}
+   {% endif %}
 
-<!-- Comments -->
-<h2>Comments</h2>
-{% for review in all_reviews %}
-<h5>{{ review[1].name }}</h5>
-<span>{{ review[0].comment }}</span>
-<hr>
-{% endfor %}
-
+   <!-- Comments -->
+   <hr>
+   <h2>Comments</h2>
+   {% if not all_reviews %}
+      <h5> No comments yet! </h5>
+   {% else %}
+      {% for review in all_reviews %}
+         <h5>{{ review[1].name }}</h5>
+         <span>{{ review[0].comment }}</span>
+         <hr>
+      {% endfor %}
+   {% endif %}
 
 {% endblock %}

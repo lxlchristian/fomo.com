@@ -10,10 +10,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import os
 
-SECRET_KEY = os.urandom(32)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config.from_pyfile('config.py')
 
 ckeditor = CKEditor(app)
 bootstrap = Bootstrap(app)
@@ -194,10 +193,12 @@ def host():
 @login_required
 def organizations():
     '''Renders a table of all the organizations.'''
-    # Get a list of all Org objects and their respective emails (queried from the users table)
-    orgs = Org.query.order_by(asc(Org.name)).all()
-    emails = [User.query.filter(User.id == org.user_id).first().email for org in orgs]
-    return render_template("orgs.html", orgs=orgs, emails=emails, length=len(orgs))
+    # Get a list of tuples in the form (<Org X>, <User Y>) which are correspond to the same org, in ascending order of name
+    dataset = db.session.query(Org, User).filter(User.id==Org.user_id).order_by(asc(Org.name)).all()
+
+    # Format data as a list of dicts using list comprehension
+    orgs = [{"name": data[0].name, "desc": data[0].description, "img_url": data[0].img_url, "email": data[1].email} for data in dataset]
+    return render_template("orgs.html", orgs=orgs)
 
 
 @app.route('/organizations/<string:org_name>')
@@ -221,7 +222,7 @@ def organization(org_name, org_index=0):
         return redirect(url_for("organizations"))
     
     else:
-        # Get emails, as well as parties in a list of tuples of the form (<Party X>, <Org Y>)
+        # Get email of the org, as well as all parties hosted by them
         email = User.query.filter(User.id == org.user_id).first().email
         parties = db.session.query(Party).filter(Party.host_id == org.user_id).order_by(desc(Party.date)).all()
         return render_template("org.html", org=org, email=email, parties=parties)
@@ -232,8 +233,23 @@ def organization(org_name, org_index=0):
 def parties():
     '''Renders a table of all the parties.'''
     # Get a list of tuples of the form (<Party X>, <Org Y>)
-    parties_soon = db.session.query(Party, Org).filter(Party.date >= datetime.today().date(), Party.host_id == Org.user_id).order_by(asc(Party.date)).all()
-    parties_over = db.session.query(Party, Org).filter(Party.date < datetime.today().date(), Party.host_id == Org.user_id).order_by(desc(Party.date)).all()
+    dataset_soon = db.session.query(Party, Org).filter(Party.date >= datetime.today().date(), Party.host_id == Org.user_id).order_by(asc(Party.date)).all()
+    parties_soon = [{"title": data[0].title, 
+                     "desc": data[0].description, 
+                     "date": data[0].date.strftime("%d %b, %Y"),
+                     "time": data[0].time.strftime("%I.%M %p"),
+                     "location": data[0].location,
+                     "org_name": data[1].name,
+                     "img_url": data[0].img_url } for data in dataset_soon]
+
+    dataset_over = db.session.query(Party, Org).filter(Party.date < datetime.today().date(), Party.host_id == Org.user_id).order_by(desc(Party.date)).all()
+    parties_over = [{"title": data[0].title, 
+                     "desc": data[0].description, 
+                     "date": data[0].date.strftime("%d %b, %Y"),
+                     "time": data[0].time.strftime("%I.%M %p"),
+                     "location": data[0].location,
+                     "org_name": data[1].name,
+                     "img_url": data[0].img_url } for data in dataset_over]
 
     return render_template("parties.html", parties_soon=parties_soon, parties_over=parties_over)
 
@@ -276,7 +292,7 @@ def party(party_title, party_index=0):
     
     else:
         # Get the name of the host organization
-        org = Org.query.filter(party.host_id == Org.user_id).first().name
+        org = Org.query.filter(party.host_id == Org.user_id).first()
 
         # Send over the reviews and average ratings to be displayed at the bottom of the page
         # Get a list of tuplets of the form (<Review X>, <User Y>)
@@ -286,6 +302,3 @@ def party(party_title, party_index=0):
                         "drinks": db.session.query(func.avg(Review.drinks)).first()[0] }
         return render_template("party.html", form=form, all_reviews=reviews, avg_ratings=avg_ratings, party=party, org=org, date_now=datetime.today().date())
 
-
-if __name__ == "__main__":
-    app.run(debug=True)

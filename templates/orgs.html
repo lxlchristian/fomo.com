@@ -1,42 +1,40 @@
-{% include "header.html" %}
 
 <!-- Displays overview of all organizations that have previously registered / posted events -->
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block content %}
-{% include "header.html" %}
 
-<!-- Page Title -->
-<h1 class="title">Organizations</h1>
-<p>An overview of participating organizations.</p>
-<h2>Full organization list</h2>
+{% block title %}Organizations{% endblock %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<p style="color:red">{{ message }}</p>
-{% endfor %}
-{% endif %}
-{% endwith %}
+{% block page_content %}
+   <!-- Page Title -->
+   <h1 class="title">Organizations</h1>
+   <p>An overview of participating organizations.</p>
+   <h2>Full organization list</h2>
 
-<table class="table">
-   <tr>
-      <th scope="col"></th>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Email</th>
-      <th scope="col">Organization Page</th>
-   </tr>
-   {% for i in range(length) %}
-   <tr>
-      <td class="w-25"><img class="img-fluid img-thumbnail" src= "{{ orgs[i].img_url }}"></td>
-      <td>{{ orgs[i].name }}</td>
-      <td>{{ orgs[i].description }}</td>
-      <td>{{ emails[i] }}</td>
-      <td><a href="{{ url_for('organization', org_name=orgs[i].name) }}" class="btn btn-primary">Details</a></td>
-   </tr>
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+   {% for message in messages %}
+   <p style="color:red">{{ message }}</p>
    {% endfor %}
-</table>
-{% endblock %}
+   {% endif %}
+   {% endwith %}
 
-{% include "footer.html" %}
+   <table class="table">
+      <tr>
+         <th scope="col"></th>
+         <th scope="col">Name</th>
+         <th scope="col">Description</th>
+         <th scope="col">Email</th>
+         <th scope="col">Organization Page</th>
+      </tr>
+      {% for org in orgs %}
+      <tr>
+         <td class="w-25"><img class="img-fluid img-thumbnail" src= "{{ org.img_url }}"></td>
+         <td>{{ org.name }}</td>
+         <td>{{ org.desc }}</td>
+         <td>{{ org.email }}</td>
+         <td><a href="{{ url_for('organization', org_name=org.name) }}" class="btn btn-primary">Details</a></td>
+      </tr>
+      {% endfor %}
+   </table>
+{% endblock %}
