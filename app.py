@@ -18,7 +18,7 @@ ckeditor = CKEditor(app)
 bootstrap = Bootstrap(app)
 
 # Create database
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///<wyd2nite>.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///<fomo>.db"
 db = SQLAlchemy(app)
 
 # Import models (models are the equivalent of a Table in SQLAlchemy);
