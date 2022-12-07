@@ -5,13 +5,14 @@ Welcome to #FOMO.com!
 Ideally, the website should be hosted publicly on a server, but Heroku is no longer available for free, and several of the alternatives such as Dokku aren't able to store persistent data, as in a Postgres database. Nevertheless, the website works perfectly fine as is, only that the SQL database will be stored locally! This README document will walk you through its entire functionality, beginning from a clean slate.
 
 1. SET UP.
+Install all the requirements in requirements.txt.
 To start, enter the following code into your terminal:
     python3 -c "import os; print(os.urandom(32).hex())"
 What you will retrieve is a secret key associated with your Flask server. Go into config.py and replace the string "YOUR_KEY_GOES_HERE" with the key, formatted as a string. Now, enter the following code into your terminal:
     flask run
 You're all set! Click into the link that appears to enter the website.
 
-2. POPULATING THE DATABASE FROM SCRATCH
+***** POPULATING THE DATABASE FROM SCRATCH *****
 The Flask application references a database <fomo>.db within the instance folder; it gets created if not already there when the application is run for the first time. Right now, in its stead is a database called <test>.db, so when the application is run as is, <fomo>.db will be created. This is intentional; the following instructions are so that YOU can populate the database yourself in the testing process. However, if you'd like to see it with an already populated database, feel free to rename <test>.db into <fomo>.db.
 
 2. REGISTER AS A USER.
