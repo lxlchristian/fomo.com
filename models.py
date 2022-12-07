@@ -16,7 +16,6 @@ class User(UserMixin, db.Model):
     # One-to-one relationship with orgs; One-to-many relationship with parties;
     # One-to-many relationship with reviews
     org = relationship("Org", back_populates="user")
-    attendance = relationship("Attendance", back_populates="attendee")
     reviews = relationship("Review", back_populates="reviewer")
 
 
@@ -51,19 +50,6 @@ class Party(db.Model):
     host = relationship("Org", back_populates="hosted") 
     
     reviews = relationship("Review", back_populates="party")
-    attendance = relationship("Attendance", back_populates="party")
-
-
-class Attendance(db.Model):
-    __tablename__ = "attendance"
-    id = db.Column(db.Integer, primary_key=True)
-    
-    # Facilitates many-to-many relationship between users and parties
-    attendee_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    attendee = relationship("User", back_populates="attendance")
-
-    party_id = db.Column(db.Integer, db.ForeignKey("parties.id"))
-    party = relationship("Party", back_populates="attendance")
 
 
 class Review(db.Model):

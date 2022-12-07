@@ -1,5 +1,6 @@
 {% extends "bootstrap/base.html" %}
 
+<!-- Making use of Flask-Bootstrap templating functionality -->
 {% block head %}
     <title>{% block title %}{% endblock %} - #FOMO.com</title>
     {{ super() }}
@@ -19,6 +20,7 @@
 {% endblock %}
 
 {% block navbar %}
+<!-- Bootstrap navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <a class="navbar-brand" href="{{url_for('homepage')}}">#FOMO.com</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

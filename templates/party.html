@@ -22,7 +22,7 @@
                   <p class="card-text">Date: {{ party.date.strftime("%d %b %Y") }}, {{ party.time.strftime("%I.%M %p") }}</p>
                   <p class="card-text">Location: {{ party.location }}</p>
                   <!-- Make sure that there's at least one review and ratings are able to be displayed -->
-                  {% if all_reviews %}
+                  {% if reviews %}
                   <p class="card-text">Music Rating: {{ avg_ratings["music"] }}</p>
                   <p class="card-text">Vibes Rating: {{ avg_ratings["vibes"] }}</p>
                   <p class="card-text">Drinks Rating: {{ avg_ratings["drinks"] }}</p>
@@ -46,7 +46,7 @@
          {% endwith %}
 
       <div class="container quick-form">
-         <h3>Let everyone know about the party.</h3>
+         <h3>Let everyone know how the party was.</h3>
          <hr>
                {{ form.csrf_token }}
                {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
@@ -57,13 +57,15 @@
    <!-- Comments -->
    <hr>
    <h2>Comments</h2>
-   {% if not all_reviews %}
+   {% if not reviews %}
       <h5> No comments yet! </h5>
    {% else %}
-      {% for review in all_reviews %}
-         <h5>{{ review[1].name }}</h5>
-         <span>{{ review[0].comment }}</span>
+      {% for review in reviews %}
+         {% if review.comment %}
+         <h5>{{ review.name }}</h5>
+         <span>{{ review.comment }}</span>
          <hr>
+         {% endif %}
       {% endfor %}
    {% endif %}
 

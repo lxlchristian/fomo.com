@@ -11,6 +11,9 @@ What you will retrieve is a secret key associated with your Flask server. Go int
     flask run
 You're all set! Click into the link that appears to enter the website.
 
+2. POPULATING THE DATABASE FROM SCRATCH
+The Flask application references a database <fomo>.db within the instance folder; it gets created if not already there when the application is run for the first time. Right now, in its stead is a database called <test>.db, so when the application is run as is, <fomo>.db will be created. This is intentional; the following instructions are so that YOU can populate the database yourself in the testing process. However, if you'd like to see it with an already populated database, feel free to rename <test>.db into <fomo>.db.
+
 2. REGISTER AS A USER.
 When the site loads, you will be automatically directed to the Login page. Note that if you try to enter any paths meant only for users such as "/parties", "/host", or "/", for example, you will be re-routed to the login page. Notice that when logged out, the navigation bar only has two routes: Register and Login. From the Login page, let's click "Create an account" to create a new account. Notice that you can toggle between registering as a User and an Organization using the hyperlink below the "Register" button. Let's register as a User first. Leaving any field blank, or providing an invalid email address, will cause the form to fail in submissions. Let's register using the following credentials:
     Name: Angela
